@@ -24,4 +24,11 @@ jobs:
     - run: npm i
     - run: npm run build --if-present
        
-    
+    - name: Run the tests and generate coverage report
+      run: npm test --coverage
+      
+    - name: Archive code coverage results
+      uses: actions/upload-artifact@v4
+      with: 
+        name: code-coverage-report
+        path: coverage/
